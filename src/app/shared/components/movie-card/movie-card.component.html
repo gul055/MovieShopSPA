@@ -1,0 +1,10 @@
+<div class="card mb-4 shadow bg-light">
+    <a [routerLink]="['/movies', movie.id]">
+      <img
+        src="{{ movie.posterUrl }}"
+        class="img-fluid"
+        alt="{{ movie.title }}"
+        onerror="this.src='https://picsum.photos/id/237/200/300'"
+      />
+    </a>
+</div>

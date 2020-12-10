@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Genre } from 'src/app/shared/models/genre';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -8,7 +10,7 @@ export class GenreService {
 
   constructor(private apiService: ApiService) { }
 
-  getAllGenres(){
-    this.apiService.getAll('genres');
+  getAllGenres():Observable<Genre[]>{
+    return this.apiService.getAll('genres');
   }
 }
