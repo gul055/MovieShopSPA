@@ -11,10 +11,19 @@ export class ApiService {
 
   constructor(protected http: HttpClient) { }
 
-  getAll(path: string): Observable<any[]> {
+  getAll(path:string, id?:number): Observable<any[]>{
+    let getUrl:string;
+
+    if (id){
+      getUrl = `${environment.apiUrl}${path}` + '/' + id;
+    }
+    else{
+      getUrl = `${environment.apiUrl}${path}`;
+    }
+
     return this.http
-       .get(`${environment.apiUrl}${path}`)
-       .pipe(map((resp) => resp as any[]));
+    .get(getUrl)
+    .pipe(map((resp) => resp as any[]));
   }
 
   getOne(path:string, id?:number): Observable<any> {

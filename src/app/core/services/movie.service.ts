@@ -11,7 +11,11 @@ export class MovieService {
   constructor(private apiService:ApiService) { }
 
   getTopRevenueMovies(): Observable<Movie[]>{
-    return this.apiService.getAll('Movies/toprevenue')
+    return this.apiService.getAll('Movies/toprevenue');
+  }
+
+  getMoviesByGenre(id:number):Observable<Movie[]>{
+    return this.apiService.getAll('Movies/genre',id);
   }
 
   getMovieDetails(id: number): Observable<Movie> {
