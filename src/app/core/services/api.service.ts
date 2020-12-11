@@ -9,7 +9,12 @@ import {Observable} from 'rxjs';
 })
 export class ApiService {
 
-  constructor(protected http: HttpClient) { }
+  private headers:HttpHeaders;
+
+  constructor(protected http: HttpClient) {
+    this.headers = new HttpHeaders();
+    this.headers.append('Content-type','application/json');
+   }
 
   getAll(path:string, id?:number): Observable<any[]>{
     let getUrl:string;
@@ -39,5 +44,9 @@ export class ApiService {
     return this.http
     .get(getUrl)
     .pipe(map((resp) => resp as any));
+  }
+
+  create(path:string, resource:any, options?:any):Observable<any>{
+    return this.http.post(`${environment.apiUrl}${path}`,resource,{headers:this.headers}).pipe(map((resp)=>resp));
   }
 }
