@@ -25,7 +25,7 @@
                     {{movie.runTime}} m | {{movie.releaseDate|date:'MM/dd/yyyy'}}
                 </div>
                 <div class="col-8" *ngFor="let genre of movie.genres">
-                    <a class="badge badge-pill badge-dark ml-1">
+                    <a class="badge badge-pill badge-dark ml-1" [routerLink]="[ '../../movies/genres', genre.id ]">
                         {{genre.name}}
                     </a>
                 </div>
